@@ -2,7 +2,17 @@
 export default {
   content: ["./index.html", "./src/**/*.{js,ts,jsx,tsx}"],
   theme: {
-    extend: {},
+    extend: {
+      animation: {
+        flip: "flip 1.5s ease-in-out",
+      },
+      keyframes: {
+        flip: {
+          "0%": { transform: "rotateY(0deg)" },
+          "100%": { transform: "rotateY(1440deg)" },
+        },
+      },
+    },
   },
   plugins: [],
 };
