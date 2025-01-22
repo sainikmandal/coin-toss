@@ -26,11 +26,9 @@ function App() {
   };
 
   return (
-    <div className="relative min-h-[100vh] bg-gray-100">
-      <div className="pb-[60px]">
-        {" "}
-        {/* Add padding bottom to prevent footer overlap */}
-        <div className="flex flex-col items-center justify-center min-h-[90vh]">
+    <div className="h-screen flex flex-col bg-gray-100">
+      <div className="flex-grow flex items-center justify-center">
+        <div className="text-center">
           <div
             className={`w-40 h-40 rounded-full bg-yellow-400 border-4 border-yellow-500
                        flex items-center justify-center mb-8 transition-transform duration-1000
@@ -52,10 +50,10 @@ function App() {
         </div>
       </div>
 
-      <footer className="absolute bottom-0 w-full h-[60px] bg-white border-t border-gray-200">
-        <div className="h-full flex items-center justify-center text-gray-600">
+      <footer className="flex-shrink-0 py-4 bg-white border-t border-gray-200">
+        <p className="text-center text-gray-600">
           © {new Date().getFullYear()} Sainik. All rights reserved.
-        </div>
+        </p>
       </footer>
     </div>
   );
