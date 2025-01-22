@@ -6,3 +6,9 @@ frontend/.env
 # Backend
 backend/bin
 backend/.env
+# IDE and Editor files
+.idea/
+.vscode/
+*.swp
+*.swo
+.DS_Store
