@@ -29,11 +29,13 @@ const CoinToss = () => {
         setResult(data.result);
         setIsFlipping(false);
       }, 1500);
-    } catch (error) {
+    } catch (err) {
+      // Properly type the error
+      const error = err as Error;
       console.error("Error details:", {
-        message: error.message,
-        stack: error.stack,
-        type: error.name,
+        message: error.message || "Unknown error",
+        stack: error.stack || "No stack trace",
+        type: error.name || "Unknown error type",
       });
       setIsFlipping(false);
     }
