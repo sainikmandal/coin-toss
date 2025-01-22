@@ -1,4 +1,5 @@
 import { useState } from "react";
+import Footer from "./components/Footer";
 
 const API_URL = import.meta.env.VITE_API_URL || "http://localhost:8080";
 
@@ -26,8 +27,8 @@ function App() {
   };
 
   return (
-    <div className="h-screen flex flex-col bg-gray-100">
-      <div className="flex-grow flex items-center justify-center">
+    <div className="min-h-screen flex flex-col">
+      <main className="flex-grow flex items-center justify-center bg-gray-100">
         <div className="text-center">
           <div
             className={`w-40 h-40 rounded-full bg-yellow-400 border-4 border-yellow-500
@@ -48,13 +49,8 @@ function App() {
             {isFlipping ? "Flipping..." : "Toss Coin"}
           </button>
         </div>
-      </div>
-
-      <footer className="flex-shrink-0 py-4 bg-white border-t border-gray-200">
-        <p className="text-center text-gray-600">
-          © {new Date().getFullYear()} Sainik. All rights reserved.
-        </p>
-      </footer>
+      </main>
+      <Footer />
     </div>
   );
 }
