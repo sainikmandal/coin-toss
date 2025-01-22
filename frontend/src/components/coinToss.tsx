@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 const API_URL = import.meta.env.VITE_API_URL || "http://localhost:8080";
 
@@ -6,24 +6,35 @@ const CoinToss = () => {
   const [isFlipping, setIsFlipping] = useState(false);
   const [result, setResult] = useState<string | null>(null);
 
+  // Log API URL on component mount
+  useEffect(() => {
+    console.log("Environment:", import.meta.env.MODE);
+    console.log("API URL:", API_URL);
+  }, []);
+
   const flipCoin = async () => {
     if (isFlipping) return;
 
     setIsFlipping(true);
-    console.log("Attempting to fetch from:", `${API_URL}/api/toss`);
+    const endpoint = `${API_URL}/api/toss`;
+    console.log("Fetching from:", endpoint);
 
     try {
-      const response = await fetch(`${API_URL}/api/toss`);
-      console.log("Response status:", response.status);
+      const response = await fetch(endpoint);
+      console.log("Response:", response);
       const data = await response.json();
-      console.log("Response data:", data);
+      console.log("Data received:", data);
 
       setTimeout(() => {
         setResult(data.result);
         setIsFlipping(false);
-      }, 1500); // Match this with animation duration
+      }, 1500);
     } catch (error) {
-      console.error("Detailed error:", error);
+      console.error("Error details:", {
+        message: error.message,
+        stack: error.stack,
+        type: error.name,
+      });
       setIsFlipping(false);
     }
   };
@@ -51,6 +62,9 @@ const CoinToss = () => {
       >
         {isFlipping ? "Flipping..." : "Toss Coin"}
       </button>
+
+      {/* Debug info */}
+      <div className="mt-4 text-xs text-gray-500">API: {API_URL}</div>
     </div>
   );
 };
